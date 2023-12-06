@@ -10,7 +10,7 @@
 
 /*external*/
 
-extern const char **environ;
+extern char **environ;
 
 /*prototypes*/
 
