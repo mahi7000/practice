@@ -10,6 +10,7 @@ int main(void)
 {
 	char *readline;
 	char **args = { NULL };
+	pid_t my_pid;
 
 	while (1)
 	{
@@ -17,10 +18,23 @@ int main(void)
 			_print("($) ");
 		readline = mod_getline();
 
-		readline[strcspn(readline, "\n")] = '\0';
+		readline[_strcspn(readline, "\n")] = '\0';
+		remove_whitespace(readline);
 
-		execve(readline, args, environ);
-		perror("execve");
+		my_pid = fork();
+		if (my_pid == 0)
+		{
+			execve(readline, args, environ);
+			perror("execve");
+		}
+		else if (my_pid > 0)
+		{
+			int status;
+			wait(&status);
+		}
+		else
+			perror("fork");
+
 		free(readline);
 	}
 	return (0);
