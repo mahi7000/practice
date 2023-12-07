@@ -18,18 +18,15 @@ int main(void)
 		if (isatty(STDIN_FILENO))
 			_print("($) ");
 		readline = mod_getline();
-
 		if (readline == NULL)
 		{
 			if (isatty(STDIN_FILENO))
 				_print("\n");
 			break;
 		}
-
 		readline[_strcspn(readline, "\n")] = '\0';
 		remove_whitespace(readline);
 		remove_leading(readline);
-
 		if (*readline == '\0')
 			continue;
 
@@ -49,7 +46,6 @@ int main(void)
 			token = strtok(NULL, " ");
 		}
 		free(readline);
-
 	}
 	return (0);
 }
