@@ -2,16 +2,16 @@
 
 /**
  * main - envoke shell
- * 
+ *
  * Return: 0
 */
 
 int main(void)
 {
-	char *readline;
+	char *readline, *token;
 	char **args = { NULL };
 	pid_t my_pid;
-	char *token;
+	int status;
 
 	while (1)
 	{
@@ -35,10 +35,7 @@ int main(void)
 				perror("execve");
 			}
 			else if (my_pid > 0)
-			{
-				int status;
 				wait(&status);
-			}
 			else
 				perror("fork");
 			token = strtok(NULL, " ");

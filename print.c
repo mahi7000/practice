@@ -3,18 +3,18 @@
 /**
  * _print - simple print function
  * @string: string parameter
- * 
+ *
 */
 
 void _print(char *string)
 {
-    write(STDOUT_FILENO, string, _strlen(string));
+	write(STDOUT_FILENO, string, _strlen(string));
 }
 
 /**
  * _strlen - function that finds length of string
  * @s: the string
- * 
+ *
  * Return: length of the string
 */
 
@@ -27,5 +27,6 @@ int _strlen(char *s)
 		l++;
 		s++;
 	}
+
 	return (l);
 }
