@@ -53,7 +53,7 @@ void remove_leading(char *str)
 {
 	int i = 0;
 	int j = 0;
-	int len = strlen(str);
+	int len = _strlen(str);
 
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;

@@ -19,6 +19,13 @@ int main(void)
 			_print("($) ");
 		readline = mod_getline();
 
+		if (readline == NULL)
+		{
+			if (isatty(STDIN_FILENO))
+				_print("\n");
+			break;
+		}
+
 		readline[_strcspn(readline, "\n")] = '\0';
 		remove_whitespace(readline);
 		remove_leading(readline);
@@ -41,8 +48,8 @@ int main(void)
 				perror("fork");
 			token = strtok(NULL, " ");
 		}
-
 		free(readline);
+
 	}
 	return (0);
 }
