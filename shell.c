@@ -24,6 +24,7 @@ int main(void)
 				_print("\n");
 			break;
 		}
+
 		readline[_strcspn(readline, "\n")] = '\0';
 		remove_whitespace(readline);
 		remove_leading(readline);
