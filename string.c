@@ -19,7 +19,7 @@ size_t _strcspn(const char *str, const char *reject)
 
 void remove_whitespace(char *str)
 {
-	int len = strlen(str);
+	int len = _strlen(str);
 	int i = len - 1;
 
 	while (i >= 0 && str[i] == ' ')

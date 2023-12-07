@@ -11,6 +11,7 @@ int main(void)
 	char *readline;
 	char **args = { NULL };
 	pid_t my_pid;
+	char *token;
 
 	while (1)
 	{
@@ -21,19 +22,27 @@ int main(void)
 		readline[_strcspn(readline, "\n")] = '\0';
 		remove_whitespace(readline);
 
-		my_pid = fork();
-		if (my_pid == 0)
+		if (*readline == '\0')
+			continue;
+
+		token = strtok(readline, " ");
+		while (token != NULL)
 		{
-			execve(readline, args, environ);
-			perror("execve");
+			my_pid = fork();
+			if (my_pid == 0)
+			{
+				execve(readline, args, environ);
+				perror("execve");
+			}
+			else if (my_pid > 0)
+			{
+				int status;
+				wait(&status);
+			}
+			else
+				perror("fork");
+			token = strtok(NULL, " ");
 		}
-		else if (my_pid > 0)
-		{
-			int status;
-			wait(&status);
-		}
-		else
-			perror("fork");
 
 		free(readline);
 	}
