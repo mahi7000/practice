@@ -36,9 +36,33 @@ void remove_whitespace(char *str)
 	int len = _strlen(str);
 	int i = len - 1;
 
-	while (i >= 0 && str[i] == ' ')
+	while (i >= 0 && (str[i] == ' ' || str[i] == '\t'))
 	{
 		str[i] = '\0';
 		i--;
 	}
+}
+
+/**
+ * remove_leading - function that removes leading whitespaces
+ * @str: string that might have leading whitespaces
+ *
+ */
+
+void remove_leading(char *str)
+{
+	int i = 0;
+	int j = 0;
+	int len = strlen(str);
+
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+
+	while (i < len)
+	{
+		str[j] = str[i];
+		i++;
+		j++;
+	}
+	str[j] = '\0';
 }

@@ -23,5 +23,6 @@ int _strlen(char *s);
 size_t _strcspn(const char *str, const char *reject);
 char *mod_getline(void);
 void remove_whitespace(char *str);
+void remove_leading(char *str);
 
 #endif

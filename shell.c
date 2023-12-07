@@ -21,6 +21,7 @@ int main(void)
 
 		readline[_strcspn(readline, "\n")] = '\0';
 		remove_whitespace(readline);
+		remove_leading(readline);
 
 		if (*readline == '\0')
 			continue;
